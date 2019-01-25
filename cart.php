@@ -3,11 +3,10 @@
  <style>
 
 table, th, td {
-  border: 1px solid black;
- 
- border-collapse: collapse;
-}
-
+ 		border: 1px solid #dddddd;
+		text-align: left;
+  		padding: 8px;
+	 }
 </style>
 </head>
 <body>
