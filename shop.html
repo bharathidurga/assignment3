@@ -1,58 +1,137 @@
 <html>
-<head>
-  <title>Product Details</title>
-  <style>
-   td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-</style>
-</head>
-<body>
-  <form action="">
-    Name:<br>
-    <input type="text" name="firstname"><br>
-    Gender:<br>
-    <input type="radio" name="gender" value="male"> Male<br>
-     <input type="radio" name="gender" value="female"> Female<br>
-     Address:<br>
-    <textarea rows="4" cols="50">
-     </textarea><br>
-    Phone Number:<br>
-    <input type="text" name="pno"><br>
-    Paymentoptions:<br>
-    <input type="radio" name="payment" value="cash">CashOnDelivery<br>
-    <input type="radio" name="payment" value="netbanking">InternetBanking<br>
-    <input type="radio" name="payment" value="credit/debit">Credit/Debit<br>
-    <input type="submit">
-    <table>
-        <tr>
-           <th>Product</th>
-           <th>UnitPrice</th>
-           <th>Qty</th>
-        </tr>
-        <tr>
-          <td>USB pendrive</td>
-          <td>300</td>
-           <td><input type="text" name="usb"/></td>
-        </tr>
-        <tr>
-          <td>wireless mouse</td>
-          <td>200</td>
-           <td><input type="text" name="wm"/></td>
-        </tr>
-        <tr>
-          <td>keyboard</td>
-          <td>400</td>
-           <td><input type="text" name="kb"/></td>
-        </tr>
-        <tr>
+
+	<head>
+ 
+		  <script type="text/javascript">
+		function order()
+		{
+			var qu1=document.getElementById("usb").value;
+			var qu2=document.getElementById("wm").value;
+			var qu3=document.getElementById("kb").value;
+			var qu4=document.getElementById("lp").value;
+			var cname=document.getElementById("name").value;
+			var gender=document.getElementById("gender").value;
+			var caddress=document.getElementById("address").value;
+			var cpno=document.getElementById("pno").value;
+			var ptype=document.getElementById("paymenttype").value;
+			var obj=new XMLHttpRequest();
+			var querystring="cart.php?name="+cname+"&gender="+gender+"&address="+caddress+"&pno="+cpno+"&paymenttype="+ptype
+
++"&Q1="+qu1+"&Q2="+qu2+"&Q3="+qu3+"&Q4="+qu4;
+			obj.onreadystatechange=function(){
+				if(obj.readyState==4&&obj.status==200)
+				{
+					document.getElementById("resdiv").innerHTML=obj.responseText;
+				}
+		    };
+		    obj.open("GET",querystring,true);
+		    obj.send();
+		}
+	  </script> 
+		</head>
+		<body>
+		<form> 
+		<style>
+   
+			td, th {
+ 
+ 			border: 1px solid #dddddd;
+ 
+			 text-align: left;
+  
+			padding: 8px;
+
+			}
+
+		</style>
+
+			<table>
+        
+	<tr>
+           	
+	<th>Product</th>
+  
+        <th>UnitPrice</th>
+   
+        <th>Qty</th>
+        
+	</tr>
+        
+	<tr>
+          
+	<td>USB pendrive</td>
+   
+       	<td>300</td>
+ 
+          <td><input type="text" id="usb"/></td>
+      
+  	</tr>
+     
+   	<tr>
+        
+  	<td>wireless mouse</td>
+       
+   	<td>200</td>
+           
+	<td><input type="text" id="wm"/></td>
+     
+   	</tr>
+      
+  	<tr>
+      
+    	<td>keyboard</td>
+     
+     	<td>400</td>
+     
+      	<td><input type="text" id="kb"/></td>
+  
+      	</tr>
+      
+  	<tr>
           <td>laptop</td>
-          <td>33000</td>
-           <td><input type="text" name="lp"/></td>
-        </tr>
-  </table>
-                      </form>
+  
+        <td>33000</td>
+          
+ 	<td><input type="text" id="lp"/></td>
+     
+   	</tr>
+ 
+ 	</table>
+                 
+	<form >
+    	
+		Name:<br>
+ 
+  		 <input type="text" id="name"><br>
+   
+ 	Gender:<br>
+  
+ 	 	<input type="radio" id="gender" value="male"> Male<br>
+  
+   		<input type="radio" id="gender" value="female"> Female<br>
+   
+ 		 Address:<br>
+  
+  		<textarea rows="4" cols="50">
+     
+		</textarea><br>
+ 
+   	Phone Number:<br>
+ 
+   		<input type="text" id="pno"><br>
+   
+ 	Paymentoptions:<br>
+    
+		<input type="radio" id="paymenttype" value="cash">CashOnDelivery<br>
+   		<input type="radio" id="paymenttype" value="netbanking">InternetBanking<br>
+     <input type="radio" id="paymenttype" value="credit/debit">Credit/Debit<br>
+  
+  		<input type="submit" value="submit">
+    
+	
+     </form>
+
+
+<div id="resdiv"><h1>see your results here</h1>	
 </body>
-                      </html>
+                     </html>
